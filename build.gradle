@@ -6,12 +6,10 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
-        classpath 'com.matthewprenger.cursegradle:com.matthewprenger.cursegradle.gradle.plugin:1.4.0'
     }
 }
 
 apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'com.matthewprenger.cursegradle'
 
 version = project.findProperty('mod_version') ?: '1.0.0'
 group = project.findProperty('mod_group') ?: 'br.com.mikael.nexustech'
@@ -57,20 +55,6 @@ jar {
     }
 }
 
-curseforge {
-    // Configure CURSEFORGE_TOKEN and CURSEFORGE_PROJECT_ID as environment variables.
-    apiKey = System.getenv('CURSEFORGE_TOKEN') ?: ''
-    project {
-        id = System.getenv('CURSEFORGE_PROJECT_ID') ?: 'SET_CURSEFORGE_PROJECT_ID'
-        changelog = 'Consulte o changelog desta versão no GitHub.'
-        changelogType = 'markdown'
-        releaseType = System.getenv('RELEASE_TYPE') ?: 'beta'
-        addGameVersion '1.12.2'
-        mainArtifact(jar) {
-            displayName = "Nexus Tech - ${version} (Minecraft 1.12.2)"
-        }
-    }
-}
 
 
 jar.finalizedBy('reobfJar')
