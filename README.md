@@ -2,11 +2,11 @@
 Minecraft Java 1.12.2 / Forge 14.23.5.2860 / Java 8.
 
 ## Energy system - first stage
-- Energy cable: 2,000 FE buffer, automatic transfer to compatible Forge Energy machines.
+- Energy cable: 2,000 FE buffer; routes energy through connected cable networks (up to 64 cable blocks per route search).
 - Solar panel: 8 FE/t in daytime, with open sky and no rain.
-- Coal generator: dedicated fuel slot for coal, charcoal or coal blocks; 20 FE/t while burning.
+- Coal generator: dedicated fuel slot for coal/charcoal or coal blocks; 20 FE/t while burning. Pauses when its buffer is full.
 - Wind turbine: 4-20 FE/t depending on altitude and weather, with open sky.
 - Energy cell: 100,000 FE capacity, accepts and outputs energy.
-- Shared Forge Energy capability lets future Nexus Tech machines connect using the same API.
+- TileEntityPoweredMachine is the shared base for future electric machines; it exposes Forge Energy and a safe energy-consumption helper.
 
-Right-click the coal generator and place fuel in its slot. Connect generators, cables and compatible machines. Normal build workflow only creates a GitHub artifact; it does not publish to CurseForge.
+The coal generator has a Vanilla-style inventory screen with a dedicated fuel slot. Connect generators to cables and cables to compatible machines or the energy cell. Normal build workflow only creates a GitHub artifact; it does not publish to CurseForge.
