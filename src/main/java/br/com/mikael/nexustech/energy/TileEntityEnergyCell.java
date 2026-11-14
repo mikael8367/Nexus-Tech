@@ -3,15 +3,17 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.energy.CapabilityEnergy;
-/** FE storage used by every battery tier. Capacity and transfer limits are set by the placed block. */
+/** FE storage used by every battery tier. Tier limits are persisted so chunk reloads retain the correct capacity. */
 public class TileEntityEnergyCell extends TileEntity {
- private final ModEnergyStorage energy;
- public TileEntityEnergyCell(){this(100000,250);}
- public TileEntityEnergyCell(int capacity,int transferRate){energy=new ModEnergyStorage(capacity,transferRate,transferRate);}
+ private int capacity=100000;
+ private int transferRate=250;
+ private ModEnergyStorage energy=new ModEnergyStorage(capacity,transferRate,transferRate);
+ public TileEntityEnergyCell(){}
+ public TileEntityEnergyCell(int capacity,int transferRate){this.capacity=Math.max(1,capacity);this.transferRate=Math.max(1,transferRate);energy=new ModEnergyStorage(this.capacity,this.transferRate,this.transferRate);}
  public int getEnergyStored(){return energy.getEnergyStored();}
  public int getMaxEnergyStored(){return energy.getMaxEnergyStored();}
  public boolean hasCapability(net.minecraftforge.common.capabilities.Capability<?> c,EnumFacing f){return c==CapabilityEnergy.ENERGY||super.hasCapability(c,f);}
  @SuppressWarnings("unchecked") public <T>T getCapability(net.minecraftforge.common.capabilities.Capability<T> c,EnumFacing f){return c==CapabilityEnergy.ENERGY?(T)energy:super.getCapability(c,f);}
- public NBTTagCompound writeToNBT(NBTTagCompound n){energy.writeEnergy(n);return super.writeToNBT(n);}
- public void readFromNBT(NBTTagCompound n){super.readFromNBT(n);energy.readEnergy(n);}
+ public NBTTagCompound writeToNBT(NBTTagCompound n){super.writeToNBT(n);n.setInteger("BatteryCapacity",capacity);n.setInteger("BatteryTransferRate",transferRate);energy.writeEnergy(n);return n;}
+ public void readFromNBT(NBTTagCompound n){super.readFromNBT(n);capacity=Math.max(1,n.hasKey("BatteryCapacity")?n.getInteger("BatteryCapacity"):100000);transferRate=Math.max(1,n.hasKey("BatteryTransferRate")?n.getInteger("BatteryTransferRate"):250);energy=new ModEnergyStorage(capacity,transferRate,transferRate);energy.readEnergy(n);}
 }
