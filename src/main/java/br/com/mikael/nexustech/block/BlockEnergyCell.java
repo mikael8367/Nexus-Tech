@@ -24,7 +24,6 @@ public class BlockEnergyCell extends BlockContainer {
         setCreativeTab(ModCreativeTabs.NEXUS_TECH);
     }
 
-    @Override
     public String getUnlocalizedName() {
         return "tile." + Reference.MOD_ID + "." + id;
     }
