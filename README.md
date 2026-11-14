@@ -12,7 +12,7 @@ O GitHub Actions executa a compilação automaticamente em cada push para `main`
 
 Ambiente local recomendado:
 - Java 8
-- Gradle 4.10.3
+- Gradle 4.9
 - Minecraft Forge 1.12.2-14.23.5.2860
 
 ## Publicar no CurseForge
