@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath 'com.matthewprenger:CurseGradle:1.4.0'
+        classpath 'com.matthewprenger.cursegradle:com.matthewprenger.cursegradle.gradle.plugin:1.4.0'
     }
 }
 
