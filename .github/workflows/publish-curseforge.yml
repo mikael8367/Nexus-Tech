@@ -29,14 +29,20 @@ jobs:
           distribution: temurin
           java-version: '8'
 
-      - name: Install Gradle 4.10.3
+      - name: Install Gradle 4.9
         run: |
           wget -q https://services.gradle.org/distributions/gradle-4.9-bin.zip
           unzip -q gradle-4.9-bin.zip -d "$RUNNER_TEMP"
           echo "$RUNNER_TEMP/gradle-4.9/bin" >> "$GITHUB_PATH"
 
+      - name: Verify build toolchain
+        run: gradle --version
+
       - name: Build mod
         run: gradle --no-daemon clean build
+
+      - name: Verify generated JAR
+        run: test -n "$(find build/libs -maxdepth 1 -type f -name '*.jar' -print -quit)"
 
       - name: Validate CurseForge credentials
         env:
