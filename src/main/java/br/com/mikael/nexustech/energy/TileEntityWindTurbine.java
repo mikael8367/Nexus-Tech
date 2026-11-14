@@ -1,0 +1,2 @@
+package br.com.mikael.nexustech.energy;
+public class TileEntityWindTurbine extends TileEntityEnergyBase {protected int generation(){if(!world.canSeeSky(pos.up()))return 0;return 4+Math.max(0,Math.min(12,(pos.getY()-64)/16))+(world.isRaining()||world.isThundering()?4:0);}}

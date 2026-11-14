@@ -1,20 +1,3 @@
 package br.com.mikael.nexustech.proxy;
-
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
-/** Code shared by the physical client and dedicated server. */
-public class CommonProxy {
-    public void preInit(FMLPreInitializationEvent event) {
-        // Register shared systems and initialize common configuration here.
-    }
-
-    public void init(FMLInitializationEvent event) {
-        // Register recipes, handlers and integrations here.
-    }
-
-    public void postInit(FMLPostInitializationEvent event) {
-        // Run compatibility checks after other mods have initialized.
-    }
-}
+import br.com.mikael.nexustech.energy.*;import br.com.mikael.nexustech.gui.GuiHandler;import br.com.mikael.nexustech.util.Reference;import net.minecraftforge.fml.common.event.*;import net.minecraftforge.fml.common.network.NetworkRegistry;import net.minecraftforge.fml.common.registry.GameRegistry;
+public class CommonProxy{public void preInit(FMLPreInitializationEvent e){GameRegistry.registerTileEntity(TileEntityEnergyCable.class,Reference.MOD_ID+":energy_cable");GameRegistry.registerTileEntity(TileEntitySolarPanel.class,Reference.MOD_ID+":solar_panel");GameRegistry.registerTileEntity(TileEntityCoalGenerator.class,Reference.MOD_ID+":coal_generator");GameRegistry.registerTileEntity(TileEntityWindTurbine.class,Reference.MOD_ID+":wind_turbine");GameRegistry.registerTileEntity(TileEntityEnergyCell.class,Reference.MOD_ID+":energy_cell");NetworkRegistry.INSTANCE.registerGuiHandler(br.com.mikael.nexustech.NexusTech.INSTANCE,new GuiHandler());}public void init(FMLInitializationEvent e){}public void postInit(FMLPostInitializationEvent e){}}

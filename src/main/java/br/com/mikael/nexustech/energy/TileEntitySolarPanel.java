@@ -1,0 +1,2 @@
+package br.com.mikael.nexustech.energy;
+public class TileEntitySolarPanel extends TileEntityEnergyBase {protected int generation(){return world.isDaytime()&&!world.isRaining()&&!world.isThundering()&&world.canSeeSky(pos.up())?8:0;}}

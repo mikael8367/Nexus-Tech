@@ -1,1 +1,5 @@
-# Nexus Tech - English (US)
+tile.nexus_tech.energy_cable.name=Energy Cable
+tile.nexus_tech.solar_panel.name=Solar Panel
+tile.nexus_tech.coal_generator.name=Coal Generator
+tile.nexus_tech.wind_turbine.name=Wind Turbine
+tile.nexus_tech.energy_cell.name=Energy Cell

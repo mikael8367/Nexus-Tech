@@ -1,1 +1,5 @@
-# Nexus Tech - Português (Brasil)
+tile.nexus_tech.energy_cable.name=Cabo de Energia
+tile.nexus_tech.solar_panel.name=Painel Solar
+tile.nexus_tech.coal_generator.name=Gerador a Carvão
+tile.nexus_tech.wind_turbine.name=Turbina Eólica
+tile.nexus_tech.energy_cell.name=Célula de Energia
