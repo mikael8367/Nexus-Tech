@@ -1,14 +1,30 @@
 # Nexus Tech
 
-Projeto inicial de mod para **Minecraft Java 1.12.2 + Minecraft Forge 14.23.5.2860**, usando Java 8.
+Projeto base de mod para **Minecraft Java 1.12.2 + Minecraft Forge 14.23.5.2860**, usando Java 8.
 
 ## Estado atual
 
-Este commit cria a estrutura compilável do mod e a automação de build/publicação. Ainda não adiciona máquinas, blocos, itens ou receitas de gameplay.
+O repositório contém a estrutura inicial de um mod Forge: classe principal, ciclo de vida (preInit/init/postInit), proxy comum/cliente, pontos de registro de blocos e itens, metadados e recursos de idioma. Ainda não adiciona máquinas, blocos, itens ou receitas jogáveis.
+
+## Estrutura Java
+
+- `br.com.mikael.nexustech.NexusTech`: ponto de entrada e ciclo de vida do Forge.
+- `util/Reference.java`: identificadores e nomes centrais do mod.
+- `proxy/CommonProxy.java`: inicialização compartilhada entre cliente e servidor.
+- `proxy/ClientProxy.java`: ponto de inicialização exclusivo do cliente.
+- `registry/RegistryHandler.java`: eventos Forge para registrar blocos e itens.
+
+## Recursos
+
+- `mcmod.info`: metadados que o Forge usa para identificar o mod.
+- `assets/nexus_tech/lang/en_us.lang`: idioma inglês.
+- `assets/nexus_tech/lang/pt_br.lang`: idioma português do Brasil.
+
+Os diretórios de modelos, texturas, blockstates e receitas devem receber arquivos quando os respectivos blocos e itens forem implementados. Não foram adicionados arquivos falsos ou conteúdo de exemplo que apareça no jogo sem estar pronto.
 
 ## Compilar
 
-O GitHub Actions executa a compilação automaticamente em cada push para `main` e em pull requests. O artefato JAR fica disponível na aba **Actions**, dentro dos artefatos da execução.
+O GitHub Actions compila o projeto automaticamente em cada push para `main` e em pull requests. O JAR fica disponível nos artefatos da execução do workflow.
 
 Ambiente local recomendado:
 - Java 8
@@ -17,19 +33,7 @@ Ambiente local recomendado:
 
 ## Publicar no CurseForge
 
-1. No GitHub, abra **Settings → Secrets and variables → Actions**.
-2. Crie o secret `CURSEFORGE_TOKEN` com sua chave de API do CurseForge. Não coloque a chave no código nem a envie pelo chat.
-3. Crie a variável `CURSEFORGE_PROJECT_ID` com o ID numérico do projeto Nexus Tech no CurseForge.
-4. Abra **Actions → Publish Nexus Tech to CurseForge → Run workflow** e escolha o canal beta, alpha ou release.
-
-A publicação é manual e protegida por credenciais. O workflow não envia arquivos automaticamente em cada push.
-
-## Estrutura
-
-- `src/main/java`: código Java do mod.
-- `src/main/resources/mcmod.info`: metadados Forge.
-- `.github/workflows/build.yml`: compilação automática.
-- `.github/workflows/publish-curseforge.yml`: publicação manual no CurseForge.
+A publicação é manual. No GitHub, abra **Actions → Publish Nexus Tech to CurseForge → Run workflow** e escolha o canal beta, alpha ou release. O workflow de compilação não envia arquivos ao CurseForge.
 
 ## Identificadores
 
