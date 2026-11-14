@@ -39,4 +39,17 @@ Compatibility includes:
 
 The exact connection depends on each mod's block, side configuration, and energy settings. Mods that use a separate energy API without a Forge Energy bridge are not automatically compatible; use a supported converter or a compatible cable network for those systems. No third-party mod is a required dependency of Nexus Tech.
 
+## Battery tiers
+
+The energy storage progression contains four Forge Energy batteries. Each upgraded battery recipe consumes the previous tier, so progression is cumulative:
+
+| Tier | Capacity | Max transfer rate | Upgrade ingredient |
+|---|---:|---:|---|
+| Basic Energy Cell | 100,000 FE | 250 FE/t | Base tier |
+| Advanced Energy Cell | 500,000 FE | 1,000 FE/t | Basic Energy Cell |
+| Elite Energy Cell | 2,500,000 FE | 4,000 FE/t | Advanced Energy Cell |
+| Ultimate Energy Cell | 10,000,000 FE | 16,000 FE/t | Elite Energy Cell |
+
+Battery capacity and transfer limits are stored in tile-entity NBT, so each tier keeps its correct limits after saving and reloading a world. All tiers expose the standard Forge Energy capability for compatible mod integrations.
+
 All registered block items use localized Vanilla-style tooltips. The standard build workflow creates a GitHub Actions artifact and does not publish automatically to CurseForge.
