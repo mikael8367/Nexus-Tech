@@ -1,7 +1,7 @@
 package br.com.mikael.nexustech.energy;
 import net.minecraft.item.ItemStack;import net.minecraft.nbt.NBTTagCompound;import net.minecraft.util.EnumFacing;import net.minecraftforge.common.capabilities.Capability;import net.minecraftforge.items.*;
 public class TileEntityCoalGenerator extends TileEntityEnergyBase {
- private final ItemStackHandler inventory=new ItemStackHandler(1){protected void onContentsChanged(int s){markDirty();}public boolean isItemValid(int s,ItemStack st){return fuelTime(st)>0;}};
+ private final ItemStackHandler inventory=new ItemStackHandler(1){protected void onContentsChanged(int s){markDirty();}public boolean isItemValid(int s,ItemStack st){return fuelTime(st)>0;}@Override public ItemStack insertItem(int s,ItemStack st,boolean sim){return fuelTime(st)>0?super.insertItem(s,st,sim):st;}};
  private int burnTime,totalBurnTime;
  private static int fuelTime(ItemStack s){if(s.isEmpty()||s.getItem().getRegistryName()==null)return 0;String id=s.getItem().getRegistryName().toString();if(id.equals("minecraft:coal_block"))return 16000;if(id.equals("minecraft:coal")||id.equals("minecraft:charcoal"))return 1600;return 0;}
  protected int generation(){if(energy.getEnergyStored()>=energy.getMaxEnergyStored())return 0;if(burnTime<=0){ItemStack s=inventory.getStackInSlot(0);int d=fuelTime(s);if(d>0){burnTime=totalBurnTime=d;s.shrink(1);inventory.setStackInSlot(0,s);}}if(burnTime>0){burnTime--;return 20;}return 0;}

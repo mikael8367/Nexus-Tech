@@ -7,11 +7,15 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 
 public class GuiCoalGenerator extends GuiContainer {
-    private final TileEntityCoalGenerator te;
+    private final ContainerCoalGenerator container;
 
     public GuiCoalGenerator(InventoryPlayer inv, TileEntityCoalGenerator t) {
-        super(new ContainerCoalGenerator(inv, t));
-        te = t;
+        this(new ContainerCoalGenerator(inv, t));
+    }
+
+    private GuiCoalGenerator(ContainerCoalGenerator c) {
+        super(c);
+        container = c;
         xSize = 176;
         ySize = 166;
     }
@@ -21,7 +25,7 @@ public class GuiCoalGenerator extends GuiContainer {
         fontRenderer.drawString(I18n.format("gui.nexus_tech.coal_generator.title"), 8, 6, 0x404040);
         fontRenderer.drawString(I18n.format("gui.nexus_tech.coal_generator.fuel"), 62, 20, 0x404040);
         fontRenderer.drawString(I18n.format("gui.nexus_tech.coal_generator.inventory"), 8, 72, 0x404040);
-        fontRenderer.drawString(te.getEnergyStored() + " / " + te.getMaxEnergyStored() + " FE", 8, 58, 0x404040);
+        fontRenderer.drawString(container.getEnergy() + " / " + container.getMaxEnergy() + " FE", 8, 58, 0x404040);
     }
 
     @Override
@@ -31,8 +35,11 @@ public class GuiCoalGenerator extends GuiContainer {
         Gui.drawRect(l, t, l + 176, t + 166, 0xFFC6C6C6);
         Gui.drawRect(l + 4, t + 4, l + 172, t + 162, 0xFFE8E8E8);
         Gui.drawRect(l + 7, t + 69, l + 169, t + 72, 0xFF555555);
-        int b = (int) (158F * te.getEnergyStored() / te.getMaxEnergyStored());
+        int b = (int) (158L * container.getEnergy() / Math.max(1, container.getMaxEnergy()));
         Gui.drawRect(l + 9, t + 70, l + 9 + b, t + 71, 0xFF55AA55);
+        int burn = container.getTotalBurnTime() > 0 ? (int) (16L * container.getBurnTime() / container.getTotalBurnTime()) : 0;
+        Gui.drawRect(l + 80, t + 53, l + 96, t + 56, 0xFF373737);
+        Gui.drawRect(l + 80, t + 53, l + 80 + burn, t + 56, 0xFFFF8800);
         drawSlot(l + 79, t + 34);
         for (int r = 0; r < 3; r++)
             for (int c = 0; c < 9; c++)

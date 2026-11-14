@@ -5,8 +5,13 @@ import br.com.mikael.nexustech.registry.ModCreativeTabs;
 import br.com.mikael.nexustech.util.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockEnergyCable extends Block {
@@ -14,9 +19,13 @@ public class BlockEnergyCable extends Block {
         super(Material.IRON);
         setRegistryName(Reference.MOD_ID, "energy_cable");
         setHardness(1.0F);
+        setHarvestLevel("pickaxe", 0);
         setCreativeTab(ModCreativeTabs.NEXUS_TECH);
     }
 
+    private static final AxisAlignedBB BOUNDS = new AxisAlignedBB(5 / 16D, 5 / 16D, 5 / 16D, 11 / 16D, 11 / 16D, 11 / 16D);
+
+    @Override
     public String getUnlocalizedName() {
         return "tile." + Reference.MOD_ID + ".energy_cable";
     }
@@ -29,5 +38,25 @@ public class BlockEnergyCable extends Block {
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
         return new TileEntityEnergyCable();
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        return BOUNDS;
+    }
+
+    @Override
+    public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
+        return BlockFaceShape.UNDEFINED;
     }
 }
