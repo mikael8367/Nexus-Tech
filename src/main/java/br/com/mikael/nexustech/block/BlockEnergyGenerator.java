@@ -11,11 +11,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class BlockEnergyGenerator extends BlockContainer {
     public enum Type { SOLAR, COAL, WIND }
@@ -53,7 +55,13 @@ public class BlockEnergyGenerator extends BlockContainer {
         // Drop stored fuel so it is not lost when the generator is broken.
         TileEntity te = world.getTileEntity(pos);
         if (te instanceof TileEntityCoalGenerator) {
-            InventoryHelper.dropInventoryItems(world, pos, ((TileEntityCoalGenerator) te).getInventory());
+            ItemStackHandler inv = ((TileEntityCoalGenerator) te).getInventory();
+            for (int i = 0; i < inv.getSlots(); i++) {
+                ItemStack stack = inv.getStackInSlot(i);
+                if (!stack.isEmpty()) {
+                    InventoryHelper.spawnItemStack(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, stack);
+                }
+            }
         }
         super.breakBlock(world, pos, state);
     }
