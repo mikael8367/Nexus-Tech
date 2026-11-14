@@ -15,3 +15,7 @@ tooltip.nexus_tech.energy_cell_advanced=Хранит 500 000 FE. Создаёт�
 tooltip.nexus_tech.energy_cell_elite=Хранит 2 500 000 FE. Создаётся с использованием улучшенной батареи.
 tooltip.nexus_tech.energy_cell_ultimate=Хранит 10 000 000 FE. Создаётся с использованием элитной батареи.
 itemGroup.nexus_tech=Nexus Tech
+
+gui.nexus_tech.coal_generator.title=Угольный генератор
+gui.nexus_tech.coal_generator.fuel=Топливо
+gui.nexus_tech.coal_generator.inventory=Инвентарь

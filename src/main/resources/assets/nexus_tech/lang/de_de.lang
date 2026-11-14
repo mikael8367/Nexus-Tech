@@ -15,3 +15,7 @@ tooltip.nexus_tech.energy_cell_advanced=Speichert 500.000 FE. Wird mit einer ein
 tooltip.nexus_tech.energy_cell_elite=Speichert 2.500.000 FE. Wird mit einer fortgeschrittenen Energiezelle hergestellt.
 tooltip.nexus_tech.energy_cell_ultimate=Speichert 10.000.000 FE. Wird mit einer Elite-Energiezelle hergestellt.
 itemGroup.nexus_tech=Nexus Tech
+
+gui.nexus_tech.coal_generator.title=Kohlegenerator
+gui.nexus_tech.coal_generator.fuel=Brennstoff
+gui.nexus_tech.coal_generator.inventory=Inventar

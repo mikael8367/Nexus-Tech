@@ -1,81 +1,38 @@
 {
+  "parent": "block/block",
   "textures": {
     "particle": "nexus_tech:blocks/solar_panel",
     "p": "nexus_tech:blocks/solar_panel"
   },
   "elements": [
     {
-      "from": [
-        0,
-        0,
-        0
-      ],
-      "to": [
-        16,
-        2,
-        16
-      ],
+      "from": [0, 0, 0],
+      "to": [16, 2, 16],
       "faces": {
-        "down": {
-          "texture": "#p"
-        },
-        "up": {
-          "texture": "#p"
-        },
-        "north": {
-          "texture": "#p"
-        },
-        "south": {
-          "texture": "#p"
-        },
-        "west": {
-          "texture": "#p"
-        },
-        "east": {
-          "texture": "#p"
-        }
+        "down": { "texture": "#p" },
+        "up": { "texture": "#p" },
+        "north": { "texture": "#p" },
+        "south": { "texture": "#p" },
+        "west": { "texture": "#p" },
+        "east": { "texture": "#p" }
       }
     },
     {
-      "from": [
-        1,
-        3,
-        1
-      ],
-      "to": [
-        15,
-        4,
-        15
-      ],
+      "from": [1, 3, 1],
+      "to": [15, 4, 15],
       "rotation": {
-        "origin": [
-          8,
-          3,
-          8
-        ],
+        "origin": [8, 3, 8],
         "axis": "x",
         "angle": -15,
         "rescale": true
       },
       "faces": {
-        "down": {
-          "texture": "#p"
-        },
-        "up": {
-          "texture": "#p"
-        },
-        "north": {
-          "texture": "#p"
-        },
-        "south": {
-          "texture": "#p"
-        },
-        "west": {
-          "texture": "#p"
-        },
-        "east": {
-          "texture": "#p"
-        }
+        "down": { "texture": "#p" },
+        "up": { "texture": "#p" },
+        "north": { "texture": "#p" },
+        "south": { "texture": "#p" },
+        "west": { "texture": "#p" },
+        "east": { "texture": "#p" }
       }
     }
   ]

@@ -15,3 +15,7 @@ tooltip.nexus_tech.energy_cell_advanced=Stores 500,000 FE. Crafted using a Basic
 tooltip.nexus_tech.energy_cell_elite=Stores 2,500,000 FE. Crafted using an Advanced Energy Cell.
 tooltip.nexus_tech.energy_cell_ultimate=Stores 10,000,000 FE. Crafted using an Elite Energy Cell.
 itemGroup.nexus_tech=Nexus Tech
+
+gui.nexus_tech.coal_generator.title=Coal Generator
+gui.nexus_tech.coal_generator.fuel=Fuel
+gui.nexus_tech.coal_generator.inventory=Inventory

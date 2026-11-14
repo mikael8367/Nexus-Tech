@@ -15,3 +15,7 @@ tooltip.nexus_tech.energy_cell_advanced=500,000 FEを蓄電。基本エネルギ
 tooltip.nexus_tech.energy_cell_elite=2,500,000 FEを蓄電。高性能エネルギーセルを使用して作成します。
 tooltip.nexus_tech.energy_cell_ultimate=10,000,000 FEを蓄電。エリートエネルギーセルを使用して作成します。
 itemGroup.nexus_tech=Nexus Tech
+
+gui.nexus_tech.coal_generator.title=石炭発電機
+gui.nexus_tech.coal_generator.fuel=燃料
+gui.nexus_tech.coal_generator.inventory=インベントリ
