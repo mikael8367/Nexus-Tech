@@ -5,12 +5,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
         classpath 'com.matthewprenger.cursegradle:com.matthewprenger.cursegradle.gradle.plugin:1.4.0'
     }
 }
 
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'com.matthewprenger.cursegradle'
 
 version = project.findProperty('mod_version') ?: '1.0.0'
@@ -20,9 +20,11 @@ archivesBaseName = project.findProperty('mod_id') ?: 'nexus_tech'
 sourceCompatibility = targetCompatibility = '1.8'
 
 minecraft {
-    version = "${project.findProperty('minecraft_version')}-${project.findProperty('forge_version')}"
-    runDir = 'run'
-    mappings = project.findProperty('mappings_version')
+    mappings channel: 'stable', version: '39-1.12'
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${project.findProperty('minecraft_version')}-${project.findProperty('forge_version')}"
 }
 
 processResources {
@@ -69,3 +71,6 @@ curseforge {
         }
     }
 }
+
+
+jar.finalizedBy('reobfJar')
