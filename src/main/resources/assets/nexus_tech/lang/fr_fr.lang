@@ -14,3 +14,4 @@ tile.nexus_tech.energy_cell_ultimate.name=Cellule énergétique ultime
 tooltip.nexus_tech.energy_cell_advanced=Stocke 500 000 FE. Se fabrique avec une cellule énergétique de base.
 tooltip.nexus_tech.energy_cell_elite=Stocke 2 500 000 FE. Se fabrique avec une cellule énergétique avancée.
 tooltip.nexus_tech.energy_cell_ultimate=Stocke 10 000 000 FE. Se fabrique avec une cellule énergétique d’élite.
+itemGroup.nexus_tech=Nexus Tech
