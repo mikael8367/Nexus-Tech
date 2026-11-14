@@ -78,13 +78,25 @@ jobs:
           WINDOW_ID=$(xdotool search --onlyvisible --name "Minecraft" 2>/dev/null | head -n 1)
           if [ -n "$WINDOW_ID" ]; then
             xdotool windowactivate --sync "$WINDOW_ID" || true
+            eval "$(xdotool getwindowgeometry --shell "$WINDOW_ID")"
+            CENTER_X=$((WIDTH / 2))
+            SINGLEPLAYER_Y=$((HEIGHT * 7 / 16))
+            BOTTOM_BUTTON_Y=$((HEIGHT - 35))
             sleep 8
-            scrot test-output/minecraft-client.png
-            # Main menu -> Singleplayer. This is a best-effort smoke interaction;
-            # the screenshot and logs are retained even if the UI differs.
-            xdotool mousemove --window "$WINDOW_ID" 640 320 click 1 || true
-            sleep 12
-            scrot test-output/minecraft-after-menu-click.png || true
+            scrot test-output/01-main-menu.png
+
+            # Main menu -> Singleplayer -> Create New World -> Create World.
+            xdotool mousemove --window "$WINDOW_ID" "$CENTER_X" "$SINGLEPLAYER_Y" click 1 || true
+            sleep 8
+            scrot test-output/02-world-selection.png || true
+            xdotool mousemove --window "$WINDOW_ID" "$CENTER_X" "$BOTTOM_BUTTON_Y" click 1 || true
+            sleep 8
+            scrot test-output/03-world-creation.png || true
+            xdotool mousemove --window "$WINDOW_ID" "$CENTER_X" "$BOTTOM_BUTTON_Y" click 1 || true
+
+            # Allow world generation and initial chunk loading before capture.
+            sleep 75
+            scrot test-output/04-world-after-create-attempt.png || true
           else
             echo "Minecraft window was not detected." > test-output/window-detection.txt
           fi
