@@ -58,4 +58,4 @@ jobs:
           CURSEFORGE_PROJECT_ID: ${{ vars.CURSEFORGE_PROJECT_ID }}
           RELEASE_TYPE: ${{ inputs.release_type }}
         run: |
-          gradle --no-daemon curseforge
+          bash scripts/publish-curseforge.sh
