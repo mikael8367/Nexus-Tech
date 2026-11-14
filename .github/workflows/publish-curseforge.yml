@@ -1,0 +1,55 @@
+name: Publish Nexus Tech to CurseForge
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: CurseForge release channel
+        required: true
+        type: choice
+        options:
+          - beta
+          - alpha
+          - release
+        default: beta
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+
+      - name: Install Gradle 4.10.3
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-4.10.3-bin.zip
+          unzip -q gradle-4.10.3-bin.zip -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-4.10.3/bin" >> "$GITHUB_PATH"
+
+      - name: Build mod
+        run: gradle --no-daemon clean build
+
+      - name: Validate CurseForge credentials
+        env:
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          CURSEFORGE_PROJECT_ID: ${{ vars.CURSEFORGE_PROJECT_ID }}
+        run: |
+          test -n "$CURSEFORGE_TOKEN" || (echo "Missing repository secret CURSEFORGE_TOKEN" && exit 1)
+          test -n "$CURSEFORGE_PROJECT_ID" || (echo "Missing repository variable CURSEFORGE_PROJECT_ID" && exit 1)
+
+      - name: Publish JAR to CurseForge
+        env:
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          CURSEFORGE_PROJECT_ID: ${{ vars.CURSEFORGE_PROJECT_ID }}
+          RELEASE_TYPE: ${{ inputs.release_type }}
+        run: |
+          gradle --no-daemon curseforge -PreleaseType="$RELEASE_TYPE"
