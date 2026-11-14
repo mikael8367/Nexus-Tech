@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 public final class ModCreativeTabs {
     public static final CreativeTabs NEXUS_TECH = new CreativeTabs("nexus_tech") {
         @Override
-        public ItemStack getTabIconItem() {
+        public ItemStack createIcon() {
             return new ItemStack(ModBlocks.ENERGY_CELL);
         }
     };
