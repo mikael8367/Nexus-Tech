@@ -10,6 +10,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -45,6 +46,16 @@ public class BlockEnergyGenerator extends BlockContainer {
             default:
                 return new TileEntitySolarPanel();
         }
+    }
+
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        // Drop stored fuel so it is not lost when the generator is broken.
+        TileEntity te = world.getTileEntity(pos);
+        if (te instanceof TileEntityCoalGenerator) {
+            InventoryHelper.dropInventoryItems(world, pos, ((TileEntityCoalGenerator) te).getInventory());
+        }
+        super.breakBlock(world, pos, state);
     }
 
     @Override
