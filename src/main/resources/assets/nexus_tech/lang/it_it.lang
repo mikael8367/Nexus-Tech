@@ -14,3 +14,4 @@ tile.nexus_tech.energy_cell_ultimate.name=Cella energetica definitiva
 tooltip.nexus_tech.energy_cell_advanced=Immagazzina 500.000 FE. Si crea usando una cella energetica base.
 tooltip.nexus_tech.energy_cell_elite=Immagazzina 2.500.000 FE. Si crea usando una cella energetica avanzata.
 tooltip.nexus_tech.energy_cell_ultimate=Immagazzina 10.000.000 FE. Si crea usando una cella energetica élite.
+itemGroup.nexus_tech=Nexus Tech
