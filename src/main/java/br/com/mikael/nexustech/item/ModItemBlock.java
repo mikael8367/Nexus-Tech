@@ -19,8 +19,9 @@ public class ModItemBlock extends ItemBlock {
     public ModItemBlock(Block block) {
         super(block);
         ResourceLocation registryName = block.getRegistryName();
+        // ResourceLocation mappings differ between MCP versions; toString() is stable in 1.12.2.
         this.descriptionKey = registryName == null ? "" :
-            "tooltip." + registryName.getResourceDomain() + "." + registryName.getResourcePath();
+            "tooltip." + registryName.toString().replace(':', '.');
     }
 
     @Override
