@@ -1,0 +1,10 @@
+tile.nexus_tech.energy_cable.name=Cable de energía
+tile.nexus_tech.solar_panel.name=Panel solar
+tile.nexus_tech.coal_generator.name=Generador de carbón
+tile.nexus_tech.wind_turbine.name=Turbina eólica
+tile.nexus_tech.energy_cell.name=Celda de energía
+tooltip.nexus_tech.energy_cable=Transfiere energía Forge entre máquinas conectadas. Capacidad: 2.000 FE.
+tooltip.nexus_tech.solar_panel=Genera 8 FE/t durante el día, con cielo despejado y sin lluvia.
+tooltip.nexus_tech.coal_generator=Quema carbón, carbón vegetal o bloques de carbón para generar 20 FE/t. Tiene una ranura de combustible.
+tooltip.nexus_tech.wind_turbine=Genera de 4 a 20 FE/t según la altitud y el clima. Necesita cielo despejado.
+tooltip.nexus_tech.energy_cell=Almacena hasta 100.000 FE y suministra energía a las máquinas conectadas.

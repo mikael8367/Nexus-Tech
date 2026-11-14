@@ -1,0 +1,10 @@
+tile.nexus_tech.energy_cable.name=能量线缆
+tile.nexus_tech.solar_panel.name=太阳能板
+tile.nexus_tech.coal_generator.name=燃煤发电机
+tile.nexus_tech.wind_turbine.name=风力涡轮机
+tile.nexus_tech.energy_cell.name=能量电池
+tooltip.nexus_tech.energy_cable=在已连接的机器之间传输 Forge 能量。容量：2,000 FE。
+tooltip.nexus_tech.solar_panel=白天且天空无遮挡、没有下雨时，每刻产生 8 FE。
+tooltip.nexus_tech.coal_generator=燃烧煤炭、木炭或煤炭块，每刻产生 20 FE。拥有专用燃料槽。
+tooltip.nexus_tech.wind_turbine=根据高度和天气，每刻产生 4–20 FE。需要无遮挡的天空。
+tooltip.nexus_tech.energy_cell=最多储存 100,000 FE，并为连接的机器供能。

@@ -1,0 +1,10 @@
+tile.nexus_tech.energy_cable.name=エネルギーケーブル
+tile.nexus_tech.solar_panel.name=ソーラーパネル
+tile.nexus_tech.coal_generator.name=石炭発電機
+tile.nexus_tech.wind_turbine.name=風力タービン
+tile.nexus_tech.energy_cell.name=エネルギーセル
+tooltip.nexus_tech.energy_cable=接続された機械の間でForge Energyを転送します。容量：2,000 FE。
+tooltip.nexus_tech.solar_panel=昼間、空が開けていて雨が降っていない場合に8 FE/tを発電します。
+tooltip.nexus_tech.coal_generator=石炭、木炭、石炭ブロックを燃やして20 FE/tを発電します。専用の燃料スロットがあります。
+tooltip.nexus_tech.wind_turbine=高度と天候に応じて4～20 FE/tを発電します。空が開けている必要があります。
+tooltip.nexus_tech.energy_cell=最大100,000 FEを蓄え、接続された機械に電力を供給します。

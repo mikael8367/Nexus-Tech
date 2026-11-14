@@ -1,0 +1,10 @@
+tile.nexus_tech.energy_cable.name=Энергетический кабель
+tile.nexus_tech.solar_panel.name=Солнечная панель
+tile.nexus_tech.coal_generator.name=Угольный генератор
+tile.nexus_tech.wind_turbine.name=Ветряная турбина
+tile.nexus_tech.energy_cell.name=Энергоячейка
+tooltip.nexus_tech.energy_cable=Передаёт Forge Energy между подключёнными механизмами. Ёмкость: 2 000 FE.
+tooltip.nexus_tech.solar_panel=Вырабатывает 8 FE/t днём при открытом небе без дождя.
+tooltip.nexus_tech.coal_generator=Сжигает уголь, древесный уголь или угольные блоки, вырабатывая 20 FE/t. Имеет отдельный слот топлива.
+tooltip.nexus_tech.wind_turbine=Вырабатывает 4–20 FE/t в зависимости от высоты и погоды. Требуется открытое небо.
+tooltip.nexus_tech.energy_cell=Хранит до 100 000 FE и передаёт энергию подключённым механизмам.

@@ -2,7 +2,7 @@
   {
     "modid": "nexus_tech",
     "name": "Nexus Tech",
-    "description": "A tecnologia do Nexus Tech para Minecraft Java 1.12.2.",
+    "description": "A technology and energy mod featuring power generation, energy storage, connected cables and industrial machines for Minecraft 1.12.2 Forge.",
     "version": "${version}",
     "mcversion": "${mcversion}",
     "url": "https://github.com/mikael8367/Nexus-Tech",

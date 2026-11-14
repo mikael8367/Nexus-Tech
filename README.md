@@ -1,12 +1,29 @@
 # Nexus Tech
-Minecraft Java 1.12.2 / Forge 14.23.5.2860 / Java 8.
 
-## Energy system - first stage
-- Energy cable: 2,000 FE buffer; routes energy through connected cable networks (up to 64 cable blocks per route search).
-- Solar panel: 8 FE/t in daytime, with open sky and no rain.
-- Coal generator: dedicated fuel slot for coal/charcoal or coal blocks; 20 FE/t while burning. Pauses when its buffer is full.
-- Wind turbine: 4-20 FE/t depending on altitude and weather, with open sky.
-- Energy cell: 100,000 FE capacity, accepts and outputs energy.
-- TileEntityPoweredMachine is the shared base for future electric machines; it exposes Forge Energy and a safe energy-consumption helper.
+Minecraft Java 1.12.2 mod built for Forge 14.23.5.2860 and Java 8.
 
-The coal generator has a Vanilla-style inventory screen with a dedicated fuel slot. Connect generators to cables and cables to compatible machines or the energy cell. Normal build workflow only creates a GitHub artifact; it does not publish to CurseForge.
+## Languages / Idiomas
+
+The mod includes localized block names and in-game item descriptions (tooltips) in:
+
+- English (primary documentation and localization)
+- Português do Brasil (localização prioritária)
+- Español
+- Русский
+- 日本語
+- Deutsch
+- Français
+- Italiano
+- 简体中文
+
+English and Brazilian Portuguese receive the most detailed wording and are the primary languages for new content. Other translations are included and should be updated whenever new blocks or items are added.
+
+## Energy system
+
+- Energy Cable: transfers Forge Energy through connected cable networks.
+- Solar Panel: generates 8 FE/t in daytime with open sky and no rain.
+- Coal Generator: generates 20 FE/t and has a dedicated fuel slot.
+- Wind Turbine: generates 4–20 FE/t depending on altitude and weather.
+- Energy Cell: stores up to 100,000 FE.
+
+All registered block items use localized Vanilla-style tooltips. The standard build workflow creates a GitHub Actions artifact and does not publish automatically to CurseForge.
