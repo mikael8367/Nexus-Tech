@@ -11,16 +11,25 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-/** ItemBlock that displays its localized description in the vanilla-style tooltip. */
+/** ItemBlock with a localized Vanilla-style description. */
 public class ModItemBlock extends ItemBlock {
-    public ModItemBlock(Block block) { super(block); }
+    private final String descriptionKey;
+
+    public ModItemBlock(Block block) {
+        super(block);
+        String unlocalizedName = block.getUnlocalizedName();
+        this.descriptionKey = unlocalizedName.startsWith("tile.")
+            ? "tooltip." + unlocalizedName.substring("tile.".length())
+            : "tooltip." + unlocalizedName;
+    }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
         super.addInformation(stack, world, tooltip, flag);
-        String key = "tooltip." + getRegistryName().getResourceDomain() + "." + getRegistryName().getResourcePath();
-        String description = I18n.translateToLocal(key);
-        if (!description.equals(key)) tooltip.add(description);
+        String description = I18n.translateToLocal(descriptionKey);
+        if (!description.equals(descriptionKey)) {
+            tooltip.add(description);
+        }
     }
 }
