@@ -1,0 +1,71 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'com.matthewprenger:CurseGradle:1.4.0'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.matthewprenger.cursegradle'
+
+version = project.findProperty('mod_version') ?: '1.0.0'
+group = project.findProperty('mod_group') ?: 'br.com.mikael.nexustech'
+archivesBaseName = project.findProperty('mod_id') ?: 'nexus_tech'
+
+sourceCompatibility = targetCompatibility = '1.8'
+
+minecraft {
+    version = "${project.findProperty('minecraft_version')}-${project.findProperty('forge_version')}"
+    runDir = 'run'
+    mappings = project.findProperty('mappings_version')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.findProperty('minecraft_version')
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand(
+            version: project.version,
+            mcversion: project.findProperty('minecraft_version')
+        )
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+            'Specification-Title': 'Nexus Tech',
+            'Specification-Vendor': 'Mikael',
+            'Specification-Version': '1',
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Implementation-Vendor': 'Mikael'
+        )
+    }
+}
+
+curseforge {
+    // Configure CURSEFORGE_TOKEN and CURSEFORGE_PROJECT_ID as environment variables.
+    apiKey = System.getenv('CURSEFORGE_TOKEN') ?: ''
+    project {
+        id = System.getenv('CURSEFORGE_PROJECT_ID') ?: 'SET_CURSEFORGE_PROJECT_ID'
+        changelog = 'Consulte o changelog desta versão no GitHub.'
+        changelogType = 'markdown'
+        releaseType = 'beta'
+        addGameVersion '1.12.2'
+        mainArtifact(jar) {
+            displayName = "Nexus Tech - ${project.version} (Minecraft 1.12.2)"
+        }
+    }
+}
