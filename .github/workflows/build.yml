@@ -48,21 +48,7 @@ jobs:
           path: build/libs/*.jar
           if-no-files-found: error
 
-      # Publish only after a successful push to main.
-      # Pull requests and manual build runs never publish.
-      - name: Validate CurseForge credentials
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        env:
-          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
-          CURSEFORGE_PROJECT_ID: ${{ vars.CURSEFORGE_PROJECT_ID }}
-        run: |
-          test -n "$CURSEFORGE_TOKEN" || (echo "Missing repository secret CURSEFORGE_TOKEN" && exit 1)
-          test -n "$CURSEFORGE_PROJECT_ID" || (echo "Missing repository variable CURSEFORGE_PROJECT_ID" && exit 1)
-
-      - name: Publish JAR to CurseForge automatically
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        env:
-          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
-          CURSEFORGE_PROJECT_ID: ${{ vars.CURSEFORGE_PROJECT_ID }}
-          RELEASE_TYPE: beta
-        run: bash scripts/publish-curseforge.sh
+      # This workflow only builds and stores the JAR as a GitHub Actions artifact.
+      # It never uploads anything to CurseForge.
+      # Use the separate "Publish Nexus Tech to CurseForge" workflow_dispatch
+      # workflow when you explicitly want to publish a release.
