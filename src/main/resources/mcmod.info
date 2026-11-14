@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "nexus_tech",
+    "name": "Nexus Tech",
+    "description": "A tecnologia do Nexus Tech para Minecraft Java 1.12.2.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/mikael8367/Nexus-Tech",
+    "updateUrl": "",
+    "authorList": ["Mikael"],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": ["forge"]
+  }
+]
