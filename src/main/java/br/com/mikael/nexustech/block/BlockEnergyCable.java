@@ -17,7 +17,6 @@ public class BlockEnergyCable extends Block {
         setCreativeTab(ModCreativeTabs.NEXUS_TECH);
     }
 
-    @Override
     public String getUnlocalizedName() {
         return "tile." + Reference.MOD_ID + ".energy_cable";
     }
