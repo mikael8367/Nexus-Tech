@@ -14,3 +14,4 @@ tile.nexus_tech.energy_cell_ultimate.name=究極エネルギーセル
 tooltip.nexus_tech.energy_cell_advanced=500,000 FEを蓄電。基本エネルギーセルを使用して作成します。
 tooltip.nexus_tech.energy_cell_elite=2,500,000 FEを蓄電。高性能エネルギーセルを使用して作成します。
 tooltip.nexus_tech.energy_cell_ultimate=10,000,000 FEを蓄電。エリートエネルギーセルを使用して作成します。
+itemGroup.nexus_tech=Nexus Tech
