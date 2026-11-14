@@ -25,9 +25,9 @@ jobs:
 
       - name: Install Gradle 4.10.3
         run: |
-          wget -q https://services.gradle.org/distributions/gradle-4.10.3-bin.zip
-          unzip -q gradle-4.10.3-bin.zip -d "$RUNNER_TEMP"
-          echo "$RUNNER_TEMP/gradle-4.10.3/bin" >> "$GITHUB_PATH"
+          wget -q https://services.gradle.org/distributions/gradle-4.9-bin.zip
+          unzip -q gradle-4.9-bin.zip -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-4.9/bin" >> "$GITHUB_PATH"
 
       - name: Build mod
         run: gradle --no-daemon clean build
