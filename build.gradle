@@ -2,7 +2,6 @@ buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
         mavenCentral()
-        jcenter()
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
@@ -62,10 +61,10 @@ curseforge {
         id = System.getenv('CURSEFORGE_PROJECT_ID') ?: 'SET_CURSEFORGE_PROJECT_ID'
         changelog = 'Consulte o changelog desta versão no GitHub.'
         changelogType = 'markdown'
-        releaseType = 'beta'
+        releaseType = System.getenv('RELEASE_TYPE') ?: 'beta'
         addGameVersion '1.12.2'
         mainArtifact(jar) {
-            displayName = "Nexus Tech - ${project.version} (Minecraft 1.12.2)"
+            displayName = "Nexus Tech - ${version} (Minecraft 1.12.2)"
         }
     }
 }
