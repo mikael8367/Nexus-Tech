@@ -1,5 +1,5 @@
 package br.com.mikael.nexustech.energy;
-import net.minecraft.nbt.NBTTagCompound;import net.minecraft.tileentity.TileEntity;import net.minecraft.util.EnumFacing;import net.minecraft.util.ITickable;import net.minecraftforge.energy.*;
+import net.minecraft.nbt.NBTTagCompound;import net.minecraft.network.NetworkManager;import net.minecraft.network.play.server.SPacketUpdateTileEntity;import net.minecraft.tileentity.TileEntity;import net.minecraft.util.EnumFacing;import net.minecraft.util.ITickable;import net.minecraft.block.state.IBlockState;import net.minecraftforge.energy.*;
 public abstract class TileEntityEnergyBase extends TileEntity implements ITickable {
  protected final ModEnergyStorage energy=new ModEnergyStorage(50000,100,100);
  protected abstract int generation();
@@ -7,5 +7,9 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITickab
  public int getEnergyStored(){return energy.getEnergyStored();}public int getMaxEnergyStored(){return energy.getMaxEnergyStored();}
  public boolean hasCapability(net.minecraftforge.common.capabilities.Capability<?> c,EnumFacing f){return c==CapabilityEnergy.ENERGY||super.hasCapability(c,f);}
  @SuppressWarnings("unchecked") public <T>T getCapability(net.minecraftforge.common.capabilities.Capability<T> c,EnumFacing f){return c==CapabilityEnergy.ENERGY?(T)energy:super.getCapability(c,f);}
+ @Override public void markDirty(){super.markDirty();if(world!=null&&!world.isRemote){IBlockState state=world.getBlockState(pos);world.notifyBlockUpdate(pos,state,state,3);}}
+ @Override public NBTTagCompound getUpdateTag(){return writeToNBT(new NBTTagCompound());}
+ @Override public SPacketUpdateTileEntity getUpdatePacket(){return new SPacketUpdateTileEntity(pos,0,getUpdateTag());}
+ @Override public void onDataPacket(NetworkManager net,SPacketUpdateTileEntity packet){readFromNBT(packet.getNbtCompound());}
  public NBTTagCompound writeToNBT(NBTTagCompound n){energy.writeEnergy(n);return super.writeToNBT(n);}public void readFromNBT(NBTTagCompound n){super.readFromNBT(n);energy.readEnergy(n);}
 }
