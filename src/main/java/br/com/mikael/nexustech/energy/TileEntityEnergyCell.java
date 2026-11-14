@@ -1,10 +1,12 @@
 package br.com.mikael.nexustech.energy;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.energy.CapabilityEnergy;
 /** FE storage used by every battery tier. Tier limits are persisted so chunk reloads retain the correct capacity. */
-public class TileEntityEnergyCell extends TileEntity {
+public class TileEntityEnergyCell extends TileEntity implements ITickable {
+ @Override public void update(){if(world!=null&&!world.isRemote&&world.getTotalWorldTime()%20==0)markDirty();}
  private int capacity=100000;
  private int transferRate=250;
  private ModEnergyStorage energy=new ModEnergyStorage(capacity,transferRate,transferRate);
