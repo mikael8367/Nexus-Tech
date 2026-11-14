@@ -25,7 +25,6 @@ public class BlockEnergyCable extends Block {
 
     private static final AxisAlignedBB BOUNDS = new AxisAlignedBB(5 / 16D, 5 / 16D, 5 / 16D, 11 / 16D, 11 / 16D, 11 / 16D);
 
-    @Override
     public String getUnlocalizedName() {
         return "tile." + Reference.MOD_ID + ".energy_cable";
     }
