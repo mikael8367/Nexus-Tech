@@ -20,7 +20,7 @@ archivesBaseName = project.findProperty('mod_id') ?: 'nexus_tech'
 sourceCompatibility = targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'stable', version: '39-1.12'
+    mappings channel: 'stable', version: project.findProperty('mappings_version')
 }
 
 dependencies {
