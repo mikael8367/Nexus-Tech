@@ -21,3 +21,8 @@ message.nexus_tech.generator=Energy: %1$s / %2$s FE (generating %3$s FE/t)
 gui.nexus_tech.coal_generator.title=Coal Generator
 gui.nexus_tech.coal_generator.fuel=Fuel
 gui.nexus_tech.coal_generator.inventory=Inventory
+
+tile.nexus_tech.electric_furnace.name=Electric Furnace
+tile.nexus_tech.industrial_smelter.name=Industrial Smelter
+tooltip.nexus_tech.electric_furnace=Smelts like a furnace without fuel. Uses 20 FE/t. Accepts energy from cables and cells.
+tooltip.nexus_tech.industrial_smelter=Smelts ores into two ingots. Uses 40 FE/t. Accepts energy from cables and cells.

@@ -10,6 +10,8 @@ public final class ModBlocks{
  public static final Block ENERGY_CELL_ADVANCED=new BlockEnergyCell("energy_cell_advanced",500000,1000);
  public static final Block ENERGY_CELL_ELITE=new BlockEnergyCell("energy_cell_elite",2500000,4000);
  public static final Block ENERGY_CELL_ULTIMATE=new BlockEnergyCell("energy_cell_ultimate",10000000,16000);
- public static final Block[] BLOCKS={ENERGY_CABLE,SOLAR_PANEL,COAL_GENERATOR,WIND_TURBINE,ENERGY_CELL,ENERGY_CELL_ADVANCED,ENERGY_CELL_ELITE,ENERGY_CELL_ULTIMATE};
+ public static final Block ELECTRIC_FURNACE=new BlockMachine("electric_furnace",BlockMachine.Kind.FURNACE,1);
+ public static final Block INDUSTRIAL_SMELTER=new BlockMachine("industrial_smelter",BlockMachine.Kind.SMELTER,2);
+ public static final Block[] BLOCKS={ENERGY_CABLE,SOLAR_PANEL,COAL_GENERATOR,WIND_TURBINE,ENERGY_CELL,ENERGY_CELL_ADVANCED,ENERGY_CELL_ELITE,ENERGY_CELL_ULTIMATE,ELECTRIC_FURNACE,INDUSTRIAL_SMELTER};
  private ModBlocks(){}
 }

@@ -21,3 +21,8 @@ message.nexus_tech.generator=Energia: %1$s / %2$s FE (gerando %3$s FE/t)
 gui.nexus_tech.coal_generator.title=Gerador a Carvão
 gui.nexus_tech.coal_generator.fuel=Combustível
 gui.nexus_tech.coal_generator.inventory=Inventário
+
+tile.nexus_tech.electric_furnace.name=Fornalha Elétrica
+tile.nexus_tech.industrial_smelter.name=Fundidora Industrial
+tooltip.nexus_tech.electric_furnace=Funde como uma fornalha, sem combustível. Usa 20 FE/t. Recebe energia de cabos e células.
+tooltip.nexus_tech.industrial_smelter=Funde minérios em dois lingotes. Usa 40 FE/t. Recebe energia de cabos e células.
