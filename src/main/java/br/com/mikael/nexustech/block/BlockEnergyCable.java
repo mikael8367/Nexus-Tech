@@ -7,7 +7,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
+
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -25,6 +29,7 @@ public class BlockEnergyCable extends Block {
 
     private static final AxisAlignedBB BOUNDS = new AxisAlignedBB(5 / 16D, 5 / 16D, 5 / 16D, 11 / 16D, 11 / 16D, 11 / 16D);
 
+    @Override
     public String getUnlocalizedName() {
         return "tile." + Reference.MOD_ID + ".energy_cable";
     }
@@ -57,5 +62,20 @@ public class BlockEnergyCable extends Block {
     @Override
     public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
         return BlockFaceShape.UNDEFINED;
+    }
+
+    /** Right-click shows the energy buffer of the cable on the action bar. */
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player,
+            EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+        if (!world.isRemote) {
+            TileEntity te = world.getTileEntity(pos);
+            if (te instanceof TileEntityEnergyCable) {
+                TileEntityEnergyCable c = (TileEntityEnergyCable) te;
+                player.sendStatusMessage(new TextComponentTranslation("message.nexus_tech.storage",
+                    c.getEnergyStored(), c.getMaxEnergyStored()), true);
+            }
+        }
+        return true;
     }
 }

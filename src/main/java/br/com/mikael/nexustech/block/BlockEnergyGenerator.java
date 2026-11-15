@@ -2,6 +2,7 @@ package br.com.mikael.nexustech.block;
 
 import br.com.mikael.nexustech.NexusTech;
 import br.com.mikael.nexustech.energy.TileEntityCoalGenerator;
+import br.com.mikael.nexustech.energy.TileEntityEnergyBase;
 import br.com.mikael.nexustech.energy.TileEntitySolarPanel;
 import br.com.mikael.nexustech.energy.TileEntityWindTurbine;
 import br.com.mikael.nexustech.registry.ModCreativeTabs;
@@ -20,6 +21,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -42,6 +44,7 @@ public class BlockEnergyGenerator extends BlockContainer {
         setCreativeTab(ModCreativeTabs.NEXUS_TECH);
     }
 
+    @Override
     public String getUnlocalizedName() {
         return "tile." + Reference.MOD_ID + "." + id;
     }
@@ -80,6 +83,13 @@ public class BlockEnergyGenerator extends BlockContainer {
             float hitX, float hitY, float hitZ) {
         if (type == Type.COAL && !world.isRemote) {
             player.openGui(NexusTech.INSTANCE, 0, world, pos.getX(), pos.getY(), pos.getZ());
+        } else if (type != Type.COAL && !world.isRemote) {
+            TileEntity te = world.getTileEntity(pos);
+            if (te instanceof TileEntityEnergyBase) {
+                TileEntityEnergyBase g = (TileEntityEnergyBase) te;
+                player.sendStatusMessage(new TextComponentTranslation("message.nexus_tech.generator",
+                    g.getEnergyStored(), g.getMaxEnergyStored(), g.getLastGeneration()), true);
+            }
         }
         return true;
     }
