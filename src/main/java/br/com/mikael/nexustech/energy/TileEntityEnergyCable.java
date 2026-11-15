@@ -14,6 +14,7 @@ public class TileEntityEnergyCable extends TileEntity implements ITickable {
  }
  if(world.getTotalWorldTime()%20==0)markDirty();}
  private EnumFacing directionToAdjacentCable(BlockPos target,Set<BlockPos> cables){for(EnumFacing side:EnumFacing.values())if(cables.contains(target.offset(side)))return side;return null;}
+ public int getEnergyStored(){return energy.getEnergyStored();}public int getMaxEnergyStored(){return energy.getMaxEnergyStored();}
  public boolean hasCapability(net.minecraftforge.common.capabilities.Capability<?> c,EnumFacing f){return c==CapabilityEnergy.ENERGY||super.hasCapability(c,f);}
  @SuppressWarnings("unchecked") public <T>T getCapability(net.minecraftforge.common.capabilities.Capability<T> c,EnumFacing f){return c==CapabilityEnergy.ENERGY?(T)energy:super.getCapability(c,f);}
  public NBTTagCompound writeToNBT(NBTTagCompound n){energy.writeEnergy(n);return super.writeToNBT(n);}public void readFromNBT(NBTTagCompound n){super.readFromNBT(n);energy.readEnergy(n);}

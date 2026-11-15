@@ -23,7 +23,7 @@
       "rotation": {
         "origin": [8, 3, 8],
         "axis": "x",
-        "angle": -15,
+        "angle": -22.5,
         "rescale": true
       },
       "faces": {

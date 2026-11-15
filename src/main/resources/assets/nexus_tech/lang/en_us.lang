@@ -2,7 +2,7 @@ tile.nexus_tech.energy_cable.name=Energy Cable
 tile.nexus_tech.solar_panel.name=Solar Panel
 tile.nexus_tech.coal_generator.name=Coal Generator
 tile.nexus_tech.wind_turbine.name=Wind Turbine
-tile.nexus_tech.energy_cell.name=Energy Cell
+tile.nexus_tech.energy_cell.name=Basic Energy Cell
 tooltip.nexus_tech.energy_cable=Transfers Forge Energy between connected machines. Capacity: 2,000 FE.
 tooltip.nexus_tech.solar_panel=Generates 8 FE/t in daytime with open sky and no rain.
 tooltip.nexus_tech.coal_generator=Burns coal, charcoal or coal blocks to generate 20 FE/t. Has a dedicated fuel slot.
@@ -15,7 +15,14 @@ tooltip.nexus_tech.energy_cell_advanced=Stores 500,000 FE. Crafted using a Basic
 tooltip.nexus_tech.energy_cell_elite=Stores 2,500,000 FE. Crafted using an Advanced Energy Cell.
 tooltip.nexus_tech.energy_cell_ultimate=Stores 10,000,000 FE. Crafted using an Elite Energy Cell.
 itemGroup.nexus_tech=Nexus Tech
+message.nexus_tech.storage=Energy: %1$s / %2$s FE
+message.nexus_tech.generator=Energy: %1$s / %2$s FE (generating %3$s FE/t)
 
 gui.nexus_tech.coal_generator.title=Coal Generator
 gui.nexus_tech.coal_generator.fuel=Fuel
 gui.nexus_tech.coal_generator.inventory=Inventory
+
+tile.nexus_tech.electric_furnace.name=Electric Furnace
+tile.nexus_tech.industrial_smelter.name=Industrial Smelter
+tooltip.nexus_tech.electric_furnace=Smelts like a furnace without fuel. Uses 20 FE/t. Accepts energy from cables and cells.
+tooltip.nexus_tech.industrial_smelter=Smelts ores into two ingots. Uses 40 FE/t. Accepts energy from cables and cells.
